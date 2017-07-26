@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.1/react-dom.js"></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.29/browser.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.23.0/polyfill.js"></script>
   <script type="text/babel">
 
   //TEMPLATE STRINGS
@@ -16,7 +18,7 @@
       `
     );
   }
-    createEmail("Fgt", 99.99)
+    createEmail("Alex", 99.99)
 
   //SPREAD OPERATORS
   //subarrays have their elements output with their parent array as if they aren't subarrays
@@ -79,6 +81,44 @@
   }
 
   console.log(eatThis(sandwich));
+
+
+  // CLASSES in JS
+  class Vehicle {
+    constructor(description, wheels){
+      this.description = description;
+      this.wheels = wheels;
+    }
+    describeYourself(){
+      console.log(`I am a ${this.description} with ${this.wheels} wheels`);
+    }
+  }
+
+  var van = new Vehicle("gray van", 4);
+
+  van.describeYourself;
+
+
+
+  // GENERATORS
+  // Use Yield and times to easily creat asynchronous functions
+  function* eachItem(arr){
+    for(var i=0;i<arr.length;i++){
+      yield arr[i];
+    }
+  }
+  var letters = eachItem(["a","b","c","d","e","f","g"]);
+
+  var abcs = setInterval(function(){
+    var letter = letters.next();
+    if(letter.done){
+      clearInterval(abcs);
+      console.log("Now I know my ABCs");
+    }else{
+      console.log(letter.value);
+    }
+  }, 500);
+
 
 </script>
   <title>ECMAScript6 Practice</title>
