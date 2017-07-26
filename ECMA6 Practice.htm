@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.29/browser.js"></script>
+  <script type="text/babel">
+
+  //TEMPLATE STRINGS
+  //allow for dynamically created custom strings, including visible white spaces
+  function createEmail(firstName, price){
+    var shipping = 12.99;
+    console.log(
+      `Good evening ${firstName}. Thank you for buying our shit. Here is your receipt:
+      Total: $${price}
+      Shipping: $${shipping}
+      Grand Totoal: $${price + shipping};
+      `
+    );
+  }
+    createEmail("Fgt", 99.99)
+
+  //SPREAD OPERATORS
+  //subarrays have their elements output with their parent array as if they aren't subarrays
+  const games = ["PUBG", "Overwatch", "Heroes of The Storm"];
+  const foods = ["Protein Shake", "Lamb", "Whale"];
+  const life = ["JS", ...games, "React", "HTML", ...foods];
+  console.log(life);
+
+
+  //DEFAULT VALUES
+  //Function's arguments can come with default values, so if they aren't passed any values while running, they can
+  //use the default values to avoid crashing
+
+  function addTwo(a=1,b=2){
+    console.log(a+b);
+  }
+  addTwo();
+  addTwo(11,12);
+
+  //OBJECT LITERALS
+  //simplified and smaller syntax for modifying objects
+
+  var cat = {
+    coffee(times) {
+      console.log("coffee ".repeat(times));
+    },
+    gaming(times) {
+      console.log("gaming ".repeat(times));
+    },
+    coding(times) {
+      console.log("coding ".repeat(times));
+    }
+  };
+
+  cat.coffee(2);
+  cat.gaming(4);
+  cat.coding(5);
+
+  //ARROW FUNCTIONS
+  //Simplify function declarations by removing curly brackets, and even parenthesis from arguments (when there is only one)
+  //Also, increase the scope of "this", therewby avoiding scoping problems
+
+  var videoGames = games => console.log(...games);
+  videoGames(["PUBG", "Overwatch", "HoTS"]);
+
+  //DESTRUCTURING ASSIGNMENT
+  //Assign multiple varible values at the same time, thereby extracting info from an array or object
+  var [first,second,third,fourth,] = ["Hot", "Tub", "Time", "Machine", "Bird", "Ghost", "Buster"]
+  console.log(fourth);
+  console.log(second);
+
+  var sandwich = {
+    title: "BLT",
+    price: 4.99,
+    ingredients: ["bacon", "lettus", "tomatoe"]
+  };
+
+  function eatThis({title, ingredients}) {
+    return `Come grab a ${title}, filled with delicious ${ingredients}`;
+  }
+
+  console.log(eatThis(sandwich));
+
+</script>
+  <title>ECMAScript6 Practice</title>
+</head>
+</html>
